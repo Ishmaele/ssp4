@@ -2,13 +2,16 @@ import java.awt.*;
 import java.awt.Point;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Random;
 
 public class DrawRectangleOnMouseClick extends JPanel{
 
     MouseHandler mouseHandler = new MouseHandler();
     Point p1 = new Point(0, 0);
-    Point p2 = new Point(0, 0);
-    boolean drawing;
+    Random rand = new Random();
+
+    int x = rand.nextInt(400);
+    int y = rand.nextInt(300);
 
     public DrawRectangleOnMouseClick(){
         this.setPreferredSize(new Dimension(500, 400));
@@ -17,22 +20,22 @@ public class DrawRectangleOnMouseClick extends JPanel{
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawRect(p1.x, p1.y, p2.x, p2.y);
+        g.drawRect(x, y, 100, 100);
+        g.fillRect(x, y, 100, 100);
     }
+
 
     private class MouseHandler extends MouseAdapter {
 
         public void mouseClicked(MouseEvent e) {
-            drawing = true;
             p1 = e.getPoint();
-            p2 = p1;
-            repaint();
-        }
 
-        public void mouseReleased(MouseEvent e) {
-            drawing = false;
-            p2 = e.getPoint();
-            repaint();
+            if (p1.x>x && p1.x<(x+100) && p1.y>y && p1.y <(y+100))
+            {
+                repaint();
+                x = rand.nextInt(400);
+                y = rand.nextInt(300);
+            }
         }
     }
 
