@@ -11,8 +11,7 @@ public class DrawSquare extends JPanel{
 
     MouseListen mouseListen = new MouseListen();
     Point p1 = new Point(0, 0);
-   static Random rand = new Random();
-
+    Random rand = new Random();
 
     int x = rand.nextInt(400);
     int y = rand.nextInt(300);
@@ -23,11 +22,11 @@ public class DrawSquare extends JPanel{
     }
     public void paintComponent(Graphics g) {
         Color myRandColor = new Color(rand.nextInt( 255),rand.nextInt( 255),rand.nextInt( 255));
-        int width = ThreadLocalRandom.current().nextInt(50, 100);
-        int height = ThreadLocalRandom.current().nextInt(50, 100);
-        g.drawRect(x, y, width, height);
+        int width = ThreadLocalRandom.current().nextInt(50, 150);
+        //int height = ThreadLocalRandom.current().nextInt(50, 150);
+        g.drawRect(x, y, width, width);
         g.setColor(myRandColor);
-        g.fillRect(x, y, width, height);
+        g.fillRect(x, y, width, width);
     }
 
     public class MouseListen extends MouseAdapter {
