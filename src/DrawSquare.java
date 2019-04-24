@@ -1,11 +1,8 @@
-import sun.plugin2.util.ColorUtil;
-
 import java.awt.*;
 import java.awt.Point;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class DrawSquare extends JPanel{
 
@@ -22,8 +19,8 @@ public class DrawSquare extends JPanel{
     }
     public void paintComponent(Graphics g) {
         Color myRandColor = new Color(rand.nextInt( 255),rand.nextInt( 255),rand.nextInt( 255));
-        int width = ThreadLocalRandom.current().nextInt(50, 150);
-        //int height = ThreadLocalRandom.current().nextInt(50, 150);
+        int width = rand.nextInt((150-50) + 1) + 50;
+
         g.drawRect(x, y, width, width);
         g.setColor(myRandColor);
         g.fillRect(x, y, width, width);
